@@ -14,7 +14,7 @@ export E Q
 
 uname_S := $(shell sh -c 'uname -s 2>/dev/null || echo not')
 
-PROGRAM=em
+PROGRAM=tmacs
 
 SRC=ansi.c basic.c bind.c buffer.c crypt.c display.c eval.c exec.c \
 	file.c fileio.c ibmpc.c input.c isearch.c line.c lock.c main.c \
@@ -40,13 +40,13 @@ CFLAGS=-O2 $(WARNINGS) -g
 #CFLAGS=-O4 -DSVR4		# Sun
 #CFLAGS=-O -qchars=signed	# RS/6000
 ifeq ($(uname_S),Linux)
- DEFINES=-DAUTOCONF -DPOSIX -DUSG -D_XOPEN_SOURCE=600 -D_GNU_SOURCE
+ DEFINES=-DAUTOCONF -DTMACS -DPOSIX -DUSG -D_XOPEN_SOURCE=600 -D_GNU_SOURCE
 endif
 ifeq ($(uname_S),FreeBSD)
- DEFINES=-DAUTOCONF -DPOSIX -DSYSV -D_FREEBSD_C_SOURCE -D_BSD_SOURCE -D_SVID_SOURCE -D_XOPEN_SOURCE=600
+ DEFINES=-DAUTOCONF -DTMACS -DPOSIX -DSYSV -D_FREEBSD_C_SOURCE -D_BSD_SOURCE -D_SVID_SOURCE -D_XOPEN_SOURCE=600
 endif
 ifeq ($(uname_S),Darwin)
- DEFINES=-DAUTOCONF -DPOSIX -DSYSV -D_DARWIN_C_SOURCE -D_BSD_SOURCE -D_SVID_SOURCE -D_XOPEN_SOURCE=600
+ DEFINES=-DAUTOCONF -DTMACS -DPOSIX -DSYSV -D_DARWIN_C_SOURCE -D_BSD_SOURCE -D_SVID_SOURCE -D_XOPEN_SOURCE=600
 endif
 #DEFINES=-DAUTOCONF
 #LIBS=-ltermcap			# BSD
