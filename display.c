@@ -1093,10 +1093,17 @@ static void modeline(struct window *wp)
 #endif
 	vtmove(n, 0);		/* Seek to right line. */
 	if (wp == curwp)	/* mark the current buffer */
-#if	PKCODE
+#if FANCY_STATUS
+		if (gmode & MDUTF8)
+			lchar = 0x2630;
+		else
+			lchar = '=';
+#else
+#if	PKCODE 
 		lchar = '-';
 #else
 		lchar = '=';
+#endif
 #endif
 	else
 #if	REVSTA
@@ -1113,12 +1120,44 @@ static void modeline(struct window *wp)
 	else
 #endif
 		vtputc(lchar);
-
+#if FANCY_STATUS
+        if (wp->w_bufp->b_mode & MDVIEW) {
+        	if (gmode & MDUTF8) {
+        	        vtputc(' ');
+	                vtputc(0x2716);
+		} else {
+	        	vtputc('%');
+	        }
+	} else
+#endif
 	if ((bp->b_flag & BFCHG) != 0)	/* "*" if changed. */
+#if FANCY_STATUS
+        {
+        	if (gmode & MDUTF8) {
+        	        vtputc(' ');
+	                vtputc(0x25C6);
+		} else {
+	        	vtputc('*');
+	        }
+	} else {
+        	if (gmode & MDUTF8) {
+        	        vtputc(lchar);
+        	        vtputc(lchar);
+		} else {
+	        	vtputc(lchar);
+	        }
+	}
+#else
 		vtputc('*');
 	else
 		vtputc(lchar);
+#endif
 
+#if FANCY_STATUS
+       	if (gmode & MDUTF8)
+       		n = 3;
+       	else 
+#endif
 	n = 2;
 
 	strcpy(tline, " ");
@@ -1149,6 +1188,11 @@ static void modeline(struct window *wp)
 	}
 	for (i = 0; i < NUMMODES; i++)	/* add in the mode flags */
 		if (wp->w_bufp->b_mode & (1 << i)) {
+#if FANCY_STATUS
+			/* View mode is displayed as a status char */
+			if ((1 << i) == MDVIEW)
+				continue;
+#endif
 			if (firstm != TRUE)
 				strcat(tline, " ");
 			firstm = FALSE;

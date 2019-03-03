@@ -172,6 +172,8 @@
 
 #endif /* Autoconf. */
 
+#define FANCY_STATUS 1	/* Fancy status line when in UTF-8 global mode */
+
 #define	PKCODE	1      /* include my extensions P.K., define always    */
 #define	IBMCHR	MSDOS  /* use IBM PC character set P.K.                */
 #define SCROLLCODE 1   /* scrolling code P.K.                          */
@@ -483,6 +485,7 @@ struct buffer {
 #define MDMAGIC	0x0040		/* regular expresions in search */
 #define	MDCRYPT	0x0080		/* encrytion mode active        */
 #define	MDASAVE	0x0100		/* auto-save mode               */
+#define MDUTF8	0x0200		/* UTF-8 mode			*/
 
 /*
  * The starting position of a region, and the size of the region in
