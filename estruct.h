@@ -167,7 +167,7 @@
 
 #else
 
-#define	XONXOFF	(UNIX | VMS)
+#define	XONXOFF	!TMACS & (UNIX | VMS)
 #define	NATIONL	(UNIX | VMS)
 
 #endif /* Autoconf. */
