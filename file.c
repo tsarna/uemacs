@@ -252,6 +252,11 @@ int readin(char *fname, int lockfl)
 	/* let a user macro get hold of things...if he wants */
 	execute(META | SPEC | 'R', FALSE, 1);
 
+	/* Hook to enable view mode if file exists but is is read-only */
+	if (access(fname, W_OK) && !access(fname, F_OK)) {
+		execute(META | SPEC | 'V', FALSE, 1);
+	}
+
 	if ((s = ffropen(fname)) == FIOERR)	/* Hard file open.      */
 		goto out;
 

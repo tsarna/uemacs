@@ -212,6 +212,7 @@ struct name_bind names[] = {
 	{"unmark-buffer", unmark},
 	{"update-screen", upscreen},
 	{"view-file", viewfile},
+	{"view-mode", viewmode},
 	{"wrap-word", wrapword},
 	{"write-file", filewrite},
 	{"write-message", writemsg},

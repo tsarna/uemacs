@@ -417,6 +417,7 @@ struct key_tab keytab[NBINDS] = {
 	{ SPEC | META | 'W', wrapword },	/* called on word wrap */
 	{ SPEC | META | 'C', nullproc },	/*  every command input */
 	{ SPEC | META | 'R', nullproc },	/*  on file read */
+	{ SPEC | META | 'V', viewmode },	/*  opened a read-only file */
 	{ SPEC | META | 'X', nullproc },	/*  on window change P.K. */
 
 	{0, NULL}

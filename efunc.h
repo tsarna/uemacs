@@ -94,6 +94,7 @@ extern int setemode(int f, int n);
 extern int delmode(int f, int n);
 extern int setgmode(int f, int n);
 extern int delgmode(int f, int n);
+extern int viewmode(int f, int n);
 extern int adjustmode(int kind, int global);
 extern int clrmes(int f, int n);
 extern int writemsg(int f, int n);

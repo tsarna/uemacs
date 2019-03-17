@@ -900,6 +900,17 @@ int delgmode(int f, int n)
 }
 
 /*
+ * Make the buffer read-only
+ */
+int viewmode(int f, int n)
+{
+    curbp->b_mode |= MDVIEW;
+    upmode();
+    
+    return TRUE;
+}
+
+/*
  * change the editor mode status
  *
  * int kind;		true = set,          false = delete
