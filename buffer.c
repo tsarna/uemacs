@@ -95,7 +95,7 @@ int swbuffer(struct buffer *bp)
 		curbp->b_dotp = lforw(curbp->b_linep);
 		curbp->b_doto = 0;
 		curbp->b_active = TRUE;
-		curbp->b_mode |= gmode;	/* P.K. */
+		curbp->b_mode |= (gmode & ~MDUTF8);/* P.K. */
 	}
 	curwp->w_bufp = bp;
 	curwp->w_linep = bp->b_linep;	/* For macros, ignored. */
