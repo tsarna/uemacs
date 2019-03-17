@@ -498,8 +498,13 @@ int cinsert(void)
 	cptr = &curwp->w_dotp->l_text[0];
 
 	/* check for a brace */
-	tptr = curwp->w_doto - 1;
-	bracef = (cptr[tptr] == '{' || cptr[tptr] == ':');
+	tptr = curwp->w_doto
+#if !TMACS
+	 - 1
+#endif
+	;
+
+	bracef = (cptr[tptr - 1] == '{' || cptr[tptr - 1] == ':');
 
 	/* save the indent of the previous line */
 	i = 0;
