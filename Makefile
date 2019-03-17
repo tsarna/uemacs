@@ -72,11 +72,11 @@ clean:
 	$(Q) rm -f $(PROGRAM) core lintout makeout tags makefile.bak *.o
 
 install: $(PROGRAM)
-	cp em ${BINDIR}
-	cp emacs.hlp ${LIBDIR}
-	cp emacs.rc ${LIBDIR}/.emacsrc
-	chmod 755 ${BINDIR}/em
-	chmod 644 ${LIBDIR}/emacs.hlp ${LIBDIR}/.emacsrc
+	cp ${PROGRAM} ${BINDIR}
+	cp emacs.hlp ${LIBDIR}/tmacs.hlp
+	cp emacs.rc ${LIBDIR}/.tmacsrc
+	chmod 755 ${BINDIR}/${PROGRAM}
+	chmod 644 ${LIBDIR}/tmacs.hlp ${LIBDIR}/.tmacsrc
 
 lint:	${SRC}
 	@rm -f lintout

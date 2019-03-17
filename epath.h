@@ -24,7 +24,11 @@ static char *pathname[] =
 
 #if	V7 | BSD | USG
 {
+#if TMACS
+	".tmacsrc", "tmacs.hlp",
+#else
 	".emacsrc", "emacs.hlp",
+#endif
 #if	PKCODE
 	    "/usr/global/lib/", "/usr/local/bin/", "/usr/local/lib/",
 #endif
