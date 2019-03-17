@@ -499,7 +499,7 @@ int cinsert(void)
 
 	/* check for a brace */
 	tptr = curwp->w_doto - 1;
-	bracef = (cptr[tptr] == '{');
+	bracef = (cptr[tptr] == '{' || cptr[tptr] == ':');
 
 	/* save the indent of the previous line */
 	i = 0;
