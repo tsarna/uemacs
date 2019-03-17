@@ -57,6 +57,7 @@ extern int metac;		/* current meta character */
 extern int ctlxc;		/* current control X prefix char */
 extern int reptc;		/* current universal repeat char */
 extern int abortc;		/* current abort command char   */
+extern int sterm;               /* search terminator character  */
 
 extern int quotec;		/* quote char during mlreply() */
 extern int tabmask;

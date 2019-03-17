@@ -725,6 +725,12 @@ int metafn(int f, int n)
 	return TRUE;
 }
 
+/* dummy function for binding to the search-terminator */
+int searchterm(int f, int n)
+{
+	return TRUE;
+}
+
 /* dummy function for binding to control-x prefix */
 int cex(int f, int n)
 {

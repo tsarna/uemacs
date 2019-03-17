@@ -71,6 +71,8 @@ struct key_tab keytab[NBINDS] = {
 	,
 	{CONTROL | ']', metafn}
 	,
+	{CONTROL | ']', searchterm}
+	,
 	{CTLX | CONTROL | 'B', listbuffers}
 	,
 	{CTLX | CONTROL | 'C', quit}

@@ -110,7 +110,8 @@ int bindtokey(int f, int n)
 
 	/* get the command sequence to bind */
 	c = getckey((kfunc == metafn) || (kfunc == cex) ||
-		    (kfunc == unarg) || (kfunc == ctrlg));
+		    (kfunc == unarg) || (kfunc == ctrlg) ||
+		    (kfunc == searchterm));
 
 	/* change it to something we can print as well */
 	cmdstr(c, &outseq[0]);
@@ -120,7 +121,8 @@ int bindtokey(int f, int n)
 
 	/* if the function is a prefix key */
 	if (kfunc == metafn || kfunc == cex ||
-	    kfunc == unarg || kfunc == ctrlg) {
+	    kfunc == unarg || kfunc == ctrlg ||
+	    kfunc == searchterm) {
 
 		/* search for an existing binding for the prefix key */
 		ktp = &keytab[0];
@@ -140,6 +142,8 @@ int bindtokey(int f, int n)
 			reptc = c;
 		if (kfunc == ctrlg)
 			abortc = c;
+	        if (kfunc == searchterm)
+	                sterm = c;
 	}
 
 	/* search the table to see if it exists */

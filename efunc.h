@@ -119,6 +119,7 @@ extern int metafn(int f, int n);
 extern int cex(int f, int n);
 extern int unarg(int f, int n);
 extern int cexit(int status);
+extern int searchterm(int f, int n);
 
 /* display.c */
 extern void vtinit(void);

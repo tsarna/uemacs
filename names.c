@@ -203,6 +203,7 @@ struct name_bind names[] = {
 #if	BSD | __hpux | SVR4
 	{"suspend-emacs", bktoshell},
 #endif
+	{"terminate-search", searchterm},
 	{"transpose-characters", twiddle},
 #if	AEDIT
 	{"trim-line", trim},
