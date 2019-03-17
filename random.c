@@ -504,7 +504,11 @@ int cinsert(void)
 #endif
 	;
 
+#if TMACS
 	bracef = (cptr[tptr - 1] == '{' || cptr[tptr - 1] == ':');
+#else
+	bracef = (cptr[tptr] == '{');
+#endif
 
 	/* save the indent of the previous line */
 	i = 0;
