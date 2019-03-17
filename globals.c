@@ -16,7 +16,7 @@ char *modename[] = {		/* name of modes                */
 	"MAGIC", "CRYPT", "ASAVE", "UTF-8"
 };
 char *mode2name[] = {		/* name of modes                */
-	"Wrap", "Cmode", "Spell", "Exact", "View", "Over",
+	"Wrap", "C", "Spell", "Exact", "View", "Over",
 	"Magic", "Crypt", "Asave", "utf-8"
 };
 char modecode[] = "WCSEVOMYAU";	/* letters to represent modes   */
