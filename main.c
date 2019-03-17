@@ -283,7 +283,7 @@ int main(int argc, char **argv)
 		swbuffer(firstbp);
 		zotbuf(bp);
 	} else
-		bp->b_mode |= gmode;
+		bp->b_mode |= (gmode & ~MDUTF8);
 
 	/* Deal with startup gotos and searches */
 	if (gotoflag && searchflag) {
