@@ -179,7 +179,12 @@ static void vtputc(int c)
 
 	if (vtcol >= term.t_ncol) {
 		++vtcol;
-		vp->v_text[term.t_ncol - 1] = '$';
+#if FANCY_UTF8
+		if (gmode & MDUTF8)
+			vp->v_text[term.t_ncol - 1] = 0x25C0;
+		else
+#endif
+			vp->v_text[term.t_ncol - 1] = '$';
 		return;
 	}
 
@@ -862,7 +867,12 @@ static void updext(void)
 	taboff = 0;
 
 	/* and put a '$' in column 1 */
-	vscreen[currow]->v_text[0] = '$';
+#if FANCY_UTF8
+	if (gmode & MDUTF8)
+		vscreen[currow]->v_text[0] = 0x25B6;
+	else
+#endif
+		vscreen[currow]->v_text[0] = '$';
 }
 
 /*
@@ -1093,7 +1103,7 @@ static void modeline(struct window *wp)
 #endif
 	vtmove(n, 0);		/* Seek to right line. */
 	if (wp == curwp)	/* mark the current buffer */
-#if FANCY_STATUS
+#if FANCY_UTF8
 		if (gmode & MDUTF8)
 			lchar = 0x2630;
 		else
@@ -1120,7 +1130,7 @@ static void modeline(struct window *wp)
 	else
 #endif
 		vtputc(lchar);
-#if FANCY_STATUS
+#if FANCY_UTF8
         if (wp->w_bufp->b_mode & MDVIEW) {
         	if (gmode & MDUTF8) {
         	        vtputc(' ');
@@ -1131,7 +1141,7 @@ static void modeline(struct window *wp)
 	} else
 #endif
 	if ((bp->b_flag & BFCHG) != 0)	/* "*" if changed. */
-#if FANCY_STATUS
+#if FANCY_UTF8
         {
         	if (gmode & MDUTF8) {
         	        vtputc(' ');
@@ -1153,7 +1163,7 @@ static void modeline(struct window *wp)
 		vtputc(lchar);
 #endif
 
-#if FANCY_STATUS
+#if FANCY_UTF8
        	if (gmode & MDUTF8)
        		n = 3;
        	else 
@@ -1188,7 +1198,7 @@ static void modeline(struct window *wp)
 	}
 	for (i = 0; i < NUMMODES; i++)	/* add in the mode flags */
 		if (wp->w_bufp->b_mode & (1 << i)) {
-#if FANCY_STATUS
+#if FANCY_UTF8
 			/* View mode is displayed as a status char */
 			if ((1 << i) == MDVIEW)
 				continue;

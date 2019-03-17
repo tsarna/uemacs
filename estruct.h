@@ -172,7 +172,7 @@
 
 #endif /* Autoconf. */
 
-#define FANCY_STATUS 1	/* Fancy status line when in UTF-8 global mode */
+#define FANCY_UTF8 1   /* Use fancy characters in UTF-8 global mode    */
 
 #define	PKCODE	1      /* include my extensions P.K., define always    */
 #define	IBMCHR	MSDOS  /* use IBM PC character set P.K.                */
