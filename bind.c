@@ -25,7 +25,7 @@ int help(int f, int n)
 	char *fname = NULL;	/* ptr to file returned by flook() */
 
 	/* first check if we are already here */
-	bp = bfind("emacs.hlp", FALSE, BFINVS);
+	bp = bfind(pathname[1], FALSE, BFINVS);
 
 	if (bp == NULL) {
 		fname = flook(pathname[1], FALSE);
