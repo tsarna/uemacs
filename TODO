@@ -1,0 +1,9 @@
+From TMACS 1.0.4:		&rsn  -- right string index
+
+Bugs:
+
+- } is not dedenting to start of line sometimes after a colon in cmode?
+
+- Repeated Meta treated as only one Meta, can't bind M-^[
+
+
